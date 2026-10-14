@@ -8,8 +8,11 @@ def temp_control(temp, current, previous):
     else:
         target_mode = "Eco"
         
-    command_needed = target_mode != previous
-    
+    if target_mode != previous:
+        command_needed = True
+    else:
+        command_needed = False
+            
     return target_mode, command_needed
 
 test_cases = [
@@ -65,5 +68,5 @@ for case in test_cases:
     print("Previous mode:", case["previous_mode"])
     print( "Percept:", "temperature =", case["temperature"], "occupied =", case["occupied"] )
     print("Target mode:", target)
-    print( "Outcome:", "SEND COMMAND" if command_needed else "NO COMMAND" )
+    print( "Outcome:", "send command" if command_needed else "no command" )
     print("-" * 45)
