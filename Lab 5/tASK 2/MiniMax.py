@@ -7,8 +7,9 @@ def minimax(
         ):
     
     global count
-
+    
     if Depth == Target:
+        count += 1
         return scores[ node ]
     
     if max1:
